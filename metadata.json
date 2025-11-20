@@ -1,0 +1,5 @@
+{
+  "name": "Gerenciador de Cursos Online IA",
+  "description": "A desktop-style online course manager with local database persistence and AI-powered course generation using Gemini.",
+  "requestFramePermissions": []
+}
