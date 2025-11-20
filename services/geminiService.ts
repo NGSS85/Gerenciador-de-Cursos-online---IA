@@ -1,6 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Course, Module, Lesson } from '../types';
-import { calculateProgress } from './storageService';
+import { calculateProgress, generateId } from './storageService';
 
 const apiKey = process.env.API_KEY || ''; 
 // Note: In a real app, handle missing API key gracefully.
@@ -64,7 +64,7 @@ export const generateCourseStructure = async (topic: string): Promise<Course | n
       
       // Transform into our app's Course structure
       const newCourse: Course = {
-        id: crypto.randomUUID(),
+        id: generateId(),
         title: data.title,
         description: data.description,
         category: data.category,
@@ -74,10 +74,10 @@ export const generateCourseStructure = async (topic: string): Promise<Course | n
         totalLessons: 0,
         completedLessons: 0,
         modules: data.modules.map((mod: any) => ({
-          id: crypto.randomUUID(),
+          id: generateId(),
           title: mod.title,
           lessons: mod.lessons.map((less: any) => ({
-            id: crypto.randomUUID(),
+            id: generateId(),
             title: less.title,
             duration: less.duration,
             completed: false,

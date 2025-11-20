@@ -1,5 +1,5 @@
 import { Course, Module, Lesson } from '../types';
-import { calculateProgress } from './storageService';
+import { calculateProgress, generateId } from './storageService';
 
 // Helper to add days to a date
 const addDays = (date: Date, days: number): Date => {
@@ -41,7 +41,7 @@ export const generateGuanabaraCourse = (): Course => {
 
   const createLesson = (title: string, duration: string, videoId: string, description: string): Lesson => {
     const lesson: Lesson = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title,
       duration,
       completed: false,
@@ -58,7 +58,7 @@ export const generateGuanabaraCourse = (): Course => {
 
   const modules: Module[] = [
     {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: "Módulo A: Conhecendo o JavaScript",
       lessons: [
         createLesson("Aula 01: O que o JavaScript faz?", "30 min", "Ptbk2af68e8", "História e capacidades da linguagem. Entenda como o JS funciona no navegador e no servidor."),
@@ -68,7 +68,7 @@ export const generateGuanabaraCourse = (): Course => {
       ]
     },
     {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: "Módulo B: Comandos Básicos",
       lessons: [
         createLesson("Aula 05: Variáveis e Tipos Primitivos", "35 min", "bXqV5x25N4w", "String, Number, Boolean, undefined, null. Como declarar e usar."),
@@ -78,7 +78,7 @@ export const generateGuanabaraCourse = (): Course => {
       ]
     },
     {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: "Módulo C: Entendendo o DOM",
       lessons: [
         createLesson("Aula 09: Introdução ao DOM", "30 min", "WWZX8MK3hKg", "Árvore DOM, seleção por Marca, ID, Nome e Classe."),
@@ -86,7 +86,7 @@ export const generateGuanabaraCourse = (): Course => {
       ]
     },
     {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: "Módulo D: Condições",
       lessons: [
         createLesson("Aula 11: Condições Simples", "30 min", "I6GtMbSEv1c", "Estrutura if/else básica. Condições no console."),
@@ -95,7 +95,7 @@ export const generateGuanabaraCourse = (): Course => {
       ]
     },
     {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: "Módulo E: Repetições",
       lessons: [
         createLesson("Aula 13: While e Do While", "30 min", "5rZqYPKIWKY", "Estruturas de repetição com teste lógico no início e no final."),
@@ -103,7 +103,7 @@ export const generateGuanabaraCourse = (): Course => {
       ]
     },
     {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: "Módulo F: Avançando",
       lessons: [
         createLesson("Aula 15: Variáveis Compostas (Arrays)", "40 min", "XdkW62tkAgU", "Vetores, índices, adição de chaves e percurso em vetores."),
@@ -114,7 +114,7 @@ export const generateGuanabaraCourse = (): Course => {
   ];
 
   const course: Course = {
-    id: crypto.randomUUID(),
+    id: generateId(),
     title: "JavaScript - Curso em Vídeo",
     description: "O lendário curso de JavaScript do Gustavo Guanabara. Aprenda do zero ao avançado com foco em DOM e ECMAScript.",
     category: "Programação",

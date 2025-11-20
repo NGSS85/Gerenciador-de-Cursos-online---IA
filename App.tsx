@@ -34,9 +34,12 @@ export default function App() {
   };
 
   const handleImportGuanabara = () => {
-    if (confirm('Deseja importar o Curso de JavaScript do Curso em Vídeo? Isso criará um cronograma de estudos de Segunda a Sexta.')) {
+    try {
       const course = generateGuanabaraCourse();
       handleAddCourse(course);
+    } catch (error) {
+      console.error("Erro ao importar curso:", error);
+      alert("Erro ao tentar importar o curso. Verifique o console para mais detalhes.");
     }
   };
 
